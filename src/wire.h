@@ -1,15 +1,26 @@
 #ifndef WIRE
 #define WIRE
 
+#include <vector>
+#include <queue>
+#include <string>
+
+class gate;
+
 class wire {
-	/* TODO:
-	 * data members:
-	 * state
-	 * gate connections
-	 * wire number
-	 * name
-	 * is input/output
-	 */
+	public:
+		wire(int number, string name = "");
+
+		int getState() const;
+		void setState(bool newValue, int setTime);
+
+		void addGate(gate* newGate);
+
+	private:
+		int wireNumber, value;
+		string name;
+		bool isInput;
+		vector<gate*> gates;
 };
 
 #endif // !WIRE
