@@ -23,7 +23,7 @@ int main() {
 	if(parseSuccess) {
 		// 2. Parse the vector file to initialize the simulation Queue with initial
 		//		Wire state (i.e., value) changes
-		queue e;
+		priority_queue< e;
 		parseSuccess = e.parseVector(fileName);
 
 	// 3. Simulate the circuit using Event-driven control
