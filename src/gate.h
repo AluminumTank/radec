@@ -8,7 +8,7 @@ class gate {
 		virtual int evaluate() = 0;
 
 	protected:
-		wire* in1, in2, out;
+		wire *in1, *in2, *out;
 		int delay;
 };
 
