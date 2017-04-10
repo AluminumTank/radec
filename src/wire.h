@@ -9,7 +9,7 @@ class gate;
 
 class wire {
 	public:
-		wire(int number, string name = "");
+		wire(int number, bool io, string name = "");
 
 		int getState() const;
 		void setState(bool newValue, int setTime);
