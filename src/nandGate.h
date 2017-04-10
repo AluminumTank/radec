@@ -1,10 +1,15 @@
-#ifndef AND
-#define AND
+#ifndef NAND
+#define NAND
+#include "gate.h"
+#include "event.h"
+#include "wire.h"
 
-class andGate : public gate {
+using namespace std;
+
+class nandGate : public gate {
 	public:
-		andGate(wire* wire1 = nullptr, wire* wire2 = nullptr, wire* wire3 = nullptr);
-		int evaluate();
+		nandGate(int d, wire* wire1 = nullptr, wire* wire2 = nullptr, wire* wire3 = nullptr);
+		int evaluate(int time);
 };
 
-#endif // !AND
+#endif // !NAND
