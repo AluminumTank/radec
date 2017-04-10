@@ -1,10 +1,11 @@
 #ifndef EVENT
 #define EVENT
 
+
 class event {
 	public:
-		event(event, value, setTime, wire);
-		bool operator<(const event &e1, const event &e2);
+		event(int num, int value, int setTime, int wire);
+		bool operator<(const event &e1);
 	private:
 		int evNum, evValue, evTime, wireNum;
 };

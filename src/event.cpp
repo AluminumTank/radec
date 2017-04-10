@@ -2,12 +2,12 @@
 
 using namespace std;
 
-event::event(event, value, setTime, wire) : evNum(event), evValue(value),
+event::event(int num, int value, int setTime, int wire) : evNum(num), evValue(value),
 	evTime(setTime), wireNum(wire) {}
 
-bool event::operator<(const event &e1, const event &e2) {
-	if(e1.evTime == e2.evTime) {
-		return e1.evNum > e2.evNum;
+bool event::operator<(const event &e1) {
+	if(evTime == e1.evTime) {
+		return evNum > e1.evNum;
 	}
-	return e1.evTime > e2.evTime;
+	return evTime > e1.evTime;
 }
