@@ -14,6 +14,7 @@ class wire {
 		int getState() const;
 		void setState(bool newValue, int setTime);
 
+		int getNumber() const;
 		void addGate(gate* newGate);
 
 	private:

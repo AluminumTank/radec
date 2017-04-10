@@ -8,6 +8,7 @@
 using namespace std;
 
 int getDelay(string d);
+bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName);
 wire* findWire(int n, vector<wire*> wires);
 
 int main() {
@@ -34,7 +35,7 @@ int main() {
 	// 4. Print the results of the simulation
 }
 
-bool parseCircuit(gates, wires, fileName) {
+bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName) {
 	ifstream in;
 	circuit.open(fileName + ".txt");
 	if(in.fail()) {
@@ -61,7 +62,8 @@ bool parseCircuit(gates, wires, fileName) {
 			wires.push_back(tmpWire);
 		}else if(tmpType == "NOT") {
 			tmp2 << in;
-			tmpGate = new notGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2));
+			tmpGate = new notGate(getDelay(tmpString), findWire(tmp1),
+					findWire(tmp2));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "AND") {
 			tmp2 << in;
@@ -72,8 +74,8 @@ bool parseCircuit(gates, wires, fileName) {
 		}else if(tmpType == "NAND") {
 			tmp2 << in;
 			tmp3 << in;
-			tmpGate = new nandGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			tmpGate = new nandGate(getDelay(tmpString), findWire(tmp1),
+					findWire(tmp2), findWire(tmp3));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "OR") {
 			tmp2 << in;
@@ -104,7 +106,10 @@ bool parseCircuit(gates, wires, fileName) {
 }
 
 wire* findWire(int n, vector<wire*> wires) {
-	//TODO
+	for(auto i = wires.begin(); i != wires.end(); ++i) {
+		if(n == *i) return i;
+	}
+	return nullptr;
 }
 
 int getDelay(string d) {
