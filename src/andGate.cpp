@@ -2,8 +2,8 @@
 
 using namespace std;
 
-andGate::andGate(wire* wire1 = nullptr, wire* wire2 = nullptr,
-		wire* wire3 = nullptr) : in1(wire1), in2(wire2), out(wire3) {}
+andGate::andGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2,
+		wire* wire3) : e(eQueue), delay(d), in1(wire1), in2(wire2), out(wire3) {}
 
 int andGate::evaluate(int evTime) {
 	int val1 = in1->getValue();

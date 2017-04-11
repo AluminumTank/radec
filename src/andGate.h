@@ -3,8 +3,8 @@
 
 class andGate : public gate {
 	public:
-		andGate(wire* wire1 = nullptr, wire* wire2 = nullptr,
-			wire* wire3 = nullptr);
+		andGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2,
+			wire* wire3);
 		int evaluate(int evTime);
 };
 

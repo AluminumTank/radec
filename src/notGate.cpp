@@ -2,13 +2,12 @@
 
 using namespace std;
 
-notGate::notGate(int gateDelay, wire* wire1 = nullptr, wire* wire2 = nullptr)
-	: delay(gateDelay), in1(wire1), out(wire2) {}
+notGate::notGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2)
+	: e(eQueue), delay(gateDelay), in1(wire1), out(wire2) {}
 
-notGate::evaluate() {
+void notGate::evaluate(int evTime) {
 	int val = in1->getValue();
 
 	if(val != -1) {
-		return !val;
 	}
 }

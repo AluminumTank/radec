@@ -2,8 +2,8 @@
 #define NOT
 
 class not : public gate {
-	notGate(int delay, wire* wire1 = nullptr, wire* wire2 = nullptr);
-	int evaluate();
+	notGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2);
+	void evaluate(int evTime);
 };
 
 #endif // !NOT

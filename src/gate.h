@@ -5,10 +5,11 @@ class wire;
 class gate {
 	public:
 		gate();
-		virtual int evaluate() = 0;
+		virtual void evaluate() = 0;
 
 	protected:
 		wire *in1, *in2, *out;
+		priority_queue<event> *e;
 		int delay;
 };
 
