@@ -11,8 +11,16 @@ notGate::notGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2)
 }
 
 void notGate::evaluate(int evTime) {
-	int val = in1->getValue();
-
-	if(val != -1) {
+	if (in1->getValue(evTime) == 0) {
+		if (out->getValue(evTime + delay) != 0) {
+			e->push(event(e->size, 0, evTime + delay, out));
+			out->setValue(0, evTime + delay);
+		}
+	}
+	else{
+		if (out->getValue(evTime + delay) != 1) {
+			e->push(event(e->size, 1, evTime + delay, out));
+			out->setValue(1, evTime + delay);
+		}
 	}
 }

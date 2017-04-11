@@ -12,5 +12,18 @@ xnorGate::xnorGate(priority_queue<event> *eQueue, int d, wire* wire1,
 }
 
 void xnorGate::evaluate(int evTime) {
-	//TODO
+	if (in1->getValue(evTime) != -1 && in2->getValue(evTime) != -1) {
+		if (in1->getValue(evTime) == in2->getValue(evTime)) {
+			if (out->getValue(evTime + delay) != 1) {
+				e->push(event(e->size, 1, evTime + delay, out));
+				out->setValue(1, evTime + delay);
+			}
+		}
+		else {
+			if (out->getValue(evTime + delay) != 0) {
+				e->push(event(e->size, 0, evTime + delay, out));
+				out->setValue(0, evTime + delay);
+			}
+		}
+	}
 }

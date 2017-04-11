@@ -21,7 +21,7 @@ class wire {
 
 	private:
 		int wireNumber, value, lastEvent;
-		vector<int> history (60, -1);
+		vector<int> history;
 		string name;
 		bool isPrint;
 		vector<gate*> gates;

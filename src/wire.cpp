@@ -3,26 +3,28 @@
 wire::wire(int number, bool io, string inName)
 {
 	wireNumber = number;
-	isInput = io;
+	isPrint = io;
 	name = inName;
 	value = -1;
 	lastEvent = 0;
+	history.insert(history.begin(), 60, -1);
 }
 
 int wire::getValue(int time) const
 {
-	return history[time];
+	for (auto i = history.begin() + time; i != history.begin(); i--) {
+		if (i[0] != -1) {
+			return i[0];
+		}
+	}
+	return -1;
 }
 
 void wire::setValue(int newValue, int setTime)
 {
-	while (setTime < 60 && 
-	  (history[setTime] == -1 || history[setTime] == history[setTime+1])) {
-		history[setTime] = newValue;
-		if (lastEvent < setTime) {
-			lastEvent = setTime;
-		}
-		setTime++;
+	history[setTime] = newValue;
+	if (lastEvent < setTime) {
+		lastEvent = setTime;
 	}
 }
 

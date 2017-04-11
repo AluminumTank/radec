@@ -9,16 +9,18 @@ nandGate::nandGate(priority_queue<event> *eQueue, int d, wire * wire1, wire * wi
 	e = eQueue;
 }
 
-void nandGate::evaluate(int time)
+void nandGate::evaluate(int evTime)
 {
-	if (in1->getValue(time) == 0 || in2->getValue(time) == 0) {
-		if (out->getValue(time + delay) != 1) {
-			e->push(event(e->size, 1, time + delay, out));
-			out->setValue(1, time + delay);
+	if (in1->getValue(evTime) == 0 || in2->getValue(evTime) == 0) {
+		if (out->getValue(evTime + delay) != 1) {
+			e->push(event(e->size, 1, evTime + delay, out));
+			out->setValue(1, evTime + delay);
 		}
 	}
 	else {
-		e->push(event(e->size, 0, time + delay, out));
-		out->setValue(0, time + delay);
+		if (out->getValue(evTime + delay) != 0) {
+			e->push(event(e->size, 0, evTime + delay, out));
+			out->setValue(0, evTime + delay);
+		}
 	}
 }

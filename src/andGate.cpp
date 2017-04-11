@@ -11,9 +11,16 @@ andGate::andGate(priority_queue<event> *eQueue, int d, wire* wire1, wire* wire2,
 	out = wire3;
 }
 int andGate::evaluate(int evTime) {
-	int val1 = in1->getValue(evTime);
-	int val2 = in2->getValue(evTime);
-	if(val1 != -1 && val2 != -1) {
-		return val1 && val2;
+	if (in1->getValue(evTime) == 0 || in2->getValue(evTime) == 0) {
+		if (out->getValue(evTime + delay) != 0) {
+			e->push(event(e->size, 0, evTime + delay, out));
+			out->setValue(0, evTime + delay);
+		}
+	}
+	else if(in1->getValue(evTime) == 1 && in2->getValue(evTime) == 1){
+		if (out->getValue(evTime + delay) != 1) {
+			e->push(event(e->size, 1, evTime + delay, out));
+			out->setValue(1, evTime + delay);
+		}
 	}
 }
