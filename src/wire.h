@@ -23,7 +23,7 @@ class wire {
 		int wireNumber, value, lastEvent;
 		vector<int> history (60, -1);
 		string name;
-		bool isInput;
+		bool isPrint;
 		vector<gate*> gates;
 };
 
