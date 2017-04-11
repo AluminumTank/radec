@@ -10,6 +10,7 @@ class gate {
 	protected:
 		wire *in1, *in2, *out;
 		int delay;
+		priority_queue<event> *e;
 };
 
 #endif // !GATE

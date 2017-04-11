@@ -1,21 +1,23 @@
 #include "nandGate.h"
 
-nandGate::nandGate(int d, wire * wire1, wire * wire2, wire * wire3)
+nandGate::nandGate(priority_queue<event> *eQueue, int d, wire * wire1, wire * wire2, wire * wire3)
 {
 	in1 = wire1;
 	in2 = wire2;
 	out = wire3;
 	delay = d;
+	e = eQueue;
 }
 
-int nandGate::evaluate(int time)
+void nandGate::evaluate(int time)
 {
 	if (in1->getValue(time) == 0 || in2->getValue(time) == 0) {
-		out->setValue(1, time + delay);
-		return 1;
+		if (out->getValue(time + delay) != 1) {
+
+			out->setValue(1, time + delay);
+		}
 	}
-	else if{
+	else {
 		out->setValue(0, time + delay);
-		return 0;
 	}
 }
