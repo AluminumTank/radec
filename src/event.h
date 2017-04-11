@@ -1,8 +1,8 @@
 #ifndef EVENT
 #define EVENT
+
 using namespace std;
 #include "wire.h"
-
 
 class event {
 	public:
