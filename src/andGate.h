@@ -1,5 +1,8 @@
 #ifndef AND
 #define AND
+#include "gate.h"
+#include "event.h"
+#include "wire.h"
 
 class andGate : public gate {
 	public:
