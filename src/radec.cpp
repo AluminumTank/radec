@@ -1,30 +1,38 @@
+#include <iostream>
 #include <fstream>
+#include <queue>
 #include "wire.h"
-#include "pQueue.h"
 #include "orGate.h"
+#include "xorGate.h"
+#include "norGate.h"
+#include "xnorGate.h"
 #include "andGate.h"
+#include "nandGate.h"
 #include "notGate.h"
+#include "event.h"
 
 using namespace std;
 
 int getDelay(string d);
-bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName);
+bool parseCircuit(priority_queue<event> e, vector<gate*> &gates,
+		vector<wire*> &wires, string fileName);
 wire* findWire(int n, vector<wire*> wires);
+bool parseVector(priority_queue<event> e, string fileName);
 
 int main() {
 	// 1. Parse circuit file to create in-memory data structure of Gates and Wires
 	//		to simulate
 	vector<gate*> gates;
 	vector<wire*> wires;
+	priority_queue<event> e;
 	string fileName;
 	getline(cin, fileName);
-	bool parseSuccess = parseCircuit(gates, wires, fileName);
+	bool parseSuccess = parseCircuit(e, gates, wires, fileName);
 
 	if(parseSuccess) {
 		// 2. Parse the vector file to initialize the simulation Queue with initial
 		//		Wire state (i.e., value) changes
-		priority_queue< e;
-		parseSuccess = e.parseVector(fileName);
+		parseSuccess = parseVector(e, fileName);
 
 	// 3. Simulate the circuit using Event-driven control
 	// first, remove the top Event e in the Queue
@@ -33,11 +41,13 @@ int main() {
 	// fourth, apply e's effects
 
 	// 4. Print the results of the simulation
+	}
 }
 
-bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName) {
+bool parseCircuit(priority_queue<event> e, vector<gate*> &gates,
+		vector<wire*> &wires, string fileName) {
 	ifstream in;
-	circuit.open(fileName + ".txt");
+	in.open(fileName + ".txt");
 	if(in.fail()) {
 		cerr << endl << fileName << ".txt could not be opened :(";
 		exit(1);
@@ -50,10 +60,10 @@ bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName) {
 	getline(in, tmpString);
 
 	while(!in.eof()) {
-		tmpType << in;
+		in >> tmpType;
 
-		tmpString << in;
-		tmp1 << in;
+		in >> tmpString;
+		in >> tmp1;
 		if(tmpType == "INPUT") {
 			tmpWire = new wire(tmp1, true, tmpString);
 			wires.push_back(tmpWire);
@@ -61,45 +71,45 @@ bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName) {
 			tmpWire = new wire(tmp1, false, tmpString);
 			wires.push_back(tmpWire);
 		}else if(tmpType == "NOT") {
-			tmp2 << in;
-			tmpGate = new notGate(getDelay(tmpString), findWire(tmp1),
-					findWire(tmp2));
+			in >> tmp2;
+			tmpGate = new notGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "AND") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new andGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new andGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "NAND") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new nandGate(getDelay(tmpString), findWire(tmp1),
-					findWire(tmp2), findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new nandGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "OR") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new orGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new orGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "XOR") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new xorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new xorGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "NOR") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new norGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new norGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}else if(tmpType == "XNOR") {
-			tmp2 << in;
-			tmp3 << in;
-			tmpGate = new xnorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
-					findWire(tmp3));
+			in >> tmp2;
+			in >> tmp3;
+			tmpGate = new xnorGate(&e, getDelay(tmpString), findWire(tmp1, wires),
+					findWire(tmp2, wires), findWire(tmp3, wires));
 			gates.push_back(tmpGate);
 		}
 	}
@@ -107,7 +117,7 @@ bool parseCircuit(vector<gate*> &gates, vector<wire*> &wires, fileName) {
 
 wire* findWire(int n, vector<wire*> wires) {
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
-		if(n == *i) return i;
+		if(n == (**i).getNumber()) return *i;
 	}
 	return nullptr;
 }
@@ -115,4 +125,8 @@ wire* findWire(int n, vector<wire*> wires) {
 int getDelay(string d) {
 	d.resize(d.size() - 2);
 	return atoi(d.c_str());
+}
+
+bool parseVector(priority_queue<event> e, string fileName) {
+	//TODO
 }

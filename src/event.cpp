@@ -7,10 +7,10 @@ event::event(int num, int value, int setTime, wire * output){
 	out = output;
 }
 
-bool event::operator<(const event &e1) {
-	if(evTime == e1.evTime) {
-		return evNum > e1.evNum;
+bool operator<(const event &e1, const event &e2) {
+	if(e1.evTime == e2.evTime) {
+		return e1.evNum > e2.evNum;
 	}
-	return evTime > e1.evTime;
+	return e1.evTime > e2.evTime;
 }
 

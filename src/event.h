@@ -7,7 +7,7 @@ using namespace std;
 class event {
 	public:
 		event(int num, int value, int setTime, wire * output);
-		bool operator<(const event &e1);
+		friend bool operator<(const event &e1, const event &e2);
 	private:
 		int evNum, evValue, evTime;
 		wire *out;
