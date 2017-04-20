@@ -11,7 +11,7 @@ class gate {
 		wire *in1, *in2, *out;
 		priority_queue<event> *e;
 		int delay;
-		priority_queue<event> *e;
+		
 };
 
 #endif // !GATE
