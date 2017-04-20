@@ -20,10 +20,13 @@ using namespace std;
 
 class Simulation {
 	public:
-		bool parse(string fileName);
+		bool parseCircuit(string fileName);
 		void simulate();
 		void print();
 	private:
+		wire* findWire(int n);
+		int getDelay(string d);
+
 		priority_queue<event> e;
 		vector<gate*> gates;
 		vector<wire*> wires;

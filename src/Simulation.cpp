@@ -1,9 +1,9 @@
 #include "Simulation.h"
 
-bool Simulation::parse(string fileName)
+bool Simulation::parseCircuit(string fileName)
 {
 	ifstream in;
-	circuit.open(fileName + ".txt");
+	in.open(fileName + ".txt");
 	if (in.fail()) {
 		cerr << endl << fileName << ".txt could not be opened :(";
 		exit(1);
@@ -16,10 +16,11 @@ bool Simulation::parse(string fileName)
 	getline(in, tmpString);
 
 	while (!in.eof()) {
-		tmpType << in;
+		in >> tmpType;
 
-		tmpString << in;
-		tmp1 << in;
+		in >> tmpString;
+		in >> tmp1;
+
 		if (tmpType == "INPUT") {
 			tmpWire = new wire(tmp1, true, tmpString);
 			wires.push_back(tmpWire);
@@ -29,49 +30,49 @@ bool Simulation::parse(string fileName)
 			wires.push_back(tmpWire);
 		}
 		else if (tmpType == "NOT") {
-			tmp2 << in;
+			in >> tmp2;
 			tmpGate = new notGate(getDelay(tmpString), findWire(tmp1),
 				findWire(tmp2));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "AND") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new andGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "NAND") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new nandGate(getDelay(tmpString), findWire(tmp1),
 				findWire(tmp2), findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "OR") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new orGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "XOR") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new xorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "NOR") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new norGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
 		else if (tmpType == "XNOR") {
-			tmp2 << in;
-			tmp3 << in;
+			in >> tmp2;
+			in >> tmp3;
 			tmpGate = new xnorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
 			gates.push_back(tmpGate);
@@ -85,4 +86,18 @@ void Simulation::simulate()
 
 void Simulation::print()
 {
+}
+
+wire * Simulation::findWire(int n)
+{
+	for (auto i = wires.begin(); i != wires.end(); ++i) {
+		if (n == (**i).getNumber()) return *i;
+	}
+	return nullptr;
+}
+
+int Simulation::getDelay(string d)
+{
+	d.resize(d.size() - 2);
+	return atoi(d.c_str());
 }

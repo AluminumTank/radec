@@ -27,3 +27,8 @@ void xorGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int xorGate::getDelay()
+{
+	return delay;
+}

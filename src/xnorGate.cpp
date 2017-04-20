@@ -27,3 +27,8 @@ void xnorGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int xnorGate::getDelay()
+{
+	return delay;
+}

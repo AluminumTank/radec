@@ -25,3 +25,8 @@ void norGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int norGate::getDelay()
+{
+	return delay;
+}

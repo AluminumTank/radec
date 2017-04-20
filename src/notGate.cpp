@@ -24,3 +24,8 @@ void notGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int notGate::getDelay()
+{
+	return delay;
+}

@@ -25,3 +25,8 @@ void orGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int orGate::getDelay()
+{
+	return delay;
+}

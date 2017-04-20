@@ -24,3 +24,8 @@ int andGate::evaluate(int evTime) {
 		}
 	}
 }
+
+int andGate::getDelay()
+{
+	return delay;
+}

@@ -24,3 +24,8 @@ void nandGate::evaluate(int evTime)
 		}
 	}
 }
+
+int nandGate::getDelay()
+{
+	return delay;
+}
