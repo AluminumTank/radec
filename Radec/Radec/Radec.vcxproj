@@ -172,6 +172,9 @@
     <ClCompile Include="..\..\src\xnorGate.cpp" />
     <ClCompile Include="..\..\src\xorGate.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\readme.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
