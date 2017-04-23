@@ -4,6 +4,8 @@
 #include "Wire.h"
 #include "Event.h"
 
+using namespace std;
+
 class NotGate : public Gate {
 	public:
 		NotGate(int d, Wire* wire1, Wire* wire2);

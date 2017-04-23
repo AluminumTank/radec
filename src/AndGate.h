@@ -4,6 +4,8 @@
 #include "Event.h"
 #include "Wire.h"
 
+using namespace std;
+
 class AndGate : public Gate {
 	public:
 		AndGate(int d, Wire* wire1, Wire* wire2, Wire* wire3);
