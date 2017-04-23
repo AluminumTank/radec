@@ -6,9 +6,9 @@
 
 class NotGate : public Gate {
 	public:
-	NotGate(int d, Wire* wire1, Wire* wire2);
-	void evaluate(int evTime);
-	int getDelay();
+		NotGate(int d, Wire* wire1, Wire* wire2);
+		Event evaluate(int evTime);
+		int getDelay();
 };
 
 #endif // !NOT

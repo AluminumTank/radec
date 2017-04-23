@@ -146,31 +146,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\andGate.h" />
-    <ClInclude Include="..\..\src\event.h" />
-    <ClInclude Include="..\..\src\gate.h" />
-    <ClInclude Include="..\..\src\nandGate.h" />
-    <ClInclude Include="..\..\src\norGate.h" />
-    <ClInclude Include="..\..\src\notGate.h" />
-    <ClInclude Include="..\..\src\orGate.h" />
+    <ClInclude Include="..\..\src\AndGate.h" />
+    <ClInclude Include="..\..\src\Event.h" />
+    <ClInclude Include="..\..\src\Gate.h" />
+    <ClInclude Include="..\..\src\NandGate.h" />
+    <ClInclude Include="..\..\src\NorGate.h" />
+    <ClInclude Include="..\..\src\NotGate.h" />
+    <ClInclude Include="..\..\src\OrGate.h" />
     <ClInclude Include="..\..\src\Simulation.h" />
-    <ClInclude Include="..\..\src\wire.h" />
-    <ClInclude Include="..\..\src\xnorGate.h" />
-    <ClInclude Include="..\..\src\xorGate.h" />
+    <ClInclude Include="..\..\src\Wire.h" />
+    <ClInclude Include="..\..\src\XnorGate.h" />
+    <ClInclude Include="..\..\src\XorGate.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\andGate.cpp" />
-    <ClCompile Include="..\..\src\event.cpp" />
-    <ClCompile Include="..\..\src\gate.cpp" />
-    <ClCompile Include="..\..\src\nandGate.cpp" />
-    <ClCompile Include="..\..\src\norGate.cpp" />
-    <ClCompile Include="..\..\src\notGate.cpp" />
-    <ClCompile Include="..\..\src\orGate.cpp" />
+    <ClCompile Include="..\..\src\AndGate.cpp" />
+    <ClCompile Include="..\..\src\Event.cpp" />
+    <ClCompile Include="..\..\src\Gate.cpp" />
+    <ClCompile Include="..\..\src\NandGate.cpp" />
+    <ClCompile Include="..\..\src\NorGate.cpp" />
+    <ClCompile Include="..\..\src\NotGate.cpp" />
+    <ClCompile Include="..\..\src\OrGate.cpp" />
     <ClCompile Include="..\..\src\radec.cpp" />
     <ClCompile Include="..\..\src\Simulation.cpp" />
-    <ClCompile Include="..\..\src\wire.cpp" />
-    <ClCompile Include="..\..\src\xnorGate.cpp" />
-    <ClCompile Include="..\..\src\xorGate.cpp" />
+    <ClCompile Include="..\..\src\Wire.cpp" />
+    <ClCompile Include="..\..\src\XnorGate.cpp" />
+    <ClCompile Include="..\..\src\XorGate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\readme.md" />

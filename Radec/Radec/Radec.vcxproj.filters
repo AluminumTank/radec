@@ -21,75 +21,75 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\gate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\wire.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\andGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\nandGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\norGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\orGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\notGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\xnorGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\xorGate.h">
-      <Filter>Header Files\Gates</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AndGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NandGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NorGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NotGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\OrGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\XnorGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\XorGate.h">
+      <Filter>Header Files\Gates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Gate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Wire.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\wire.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\event.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\andGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\nandGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\norGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\notGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\orGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\xnorGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\xorGate.cpp">
-      <Filter>Source Files\Gates</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\radec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AndGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NandGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NorGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NotGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\OrGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\XnorGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\XorGate.cpp">
+      <Filter>Source Files\Gates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Gate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Wire.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

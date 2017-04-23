@@ -24,12 +24,12 @@ class Simulation {
 		void simulate();
 		void print();
 	private:
-		wire* findWire(int n);
+		Wire* findWire(int n);
 		int getDelay(string d);
 
-		priority_queue<event> e;
-		vector<gate*> gates;
-		vector<wire*> wires;
+		priority_queue<Event> e;
+		vector<Gate*> gates;
+		vector<Wire*> wires;
 };
 
 #endif // !SIMULATION
