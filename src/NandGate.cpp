@@ -12,13 +12,13 @@ void NandGate::evaluate(int evTime)
 {
 	if (in1->getValue(evTime) == 0 || in2->getValue(evTime) == 0) {
 		if (out->getValue(evTime + delay) != 1) {
-			e->push(event(e->size, 1, evTime + delay, out));
+			e->push(Event(e->size, 1, evTime + delay, out));
 			out->setValue(1, evTime + delay);
 		}
 	}
 	else {
 		if (out->getValue(evTime + delay) != 0) {
-			e->push(event(e->size, 0, evTime + delay, out));
+			e->push(Event(e->size, 0, evTime + delay, out));
 			out->setValue(0, evTime + delay);
 		}
 	}
