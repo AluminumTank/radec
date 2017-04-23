@@ -13,14 +13,16 @@ class Wire {
 	public:
 		Wire(int number, bool io, string inName = "");
 
-		int getValue(int time) const;
-		void setValue(int newValue, int setTime);
-
-		int getNumber() const;
 		void addGate(Gate* newGate);
 
+		int getValue(int time) const;
+		int getNumber() const;
+		string getName() const;
+
+		void setValue(int newValue, int setTime);
+
 	private:
-		int wireNumber, value, lastEvent;
+		int WireNumber, value, lastEvent;
 		vector<int> history;
 		string name;
 		bool isPrint;

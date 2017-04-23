@@ -30,10 +30,15 @@ void Wire::setValue(int newValue, int setTime)
 
 int Wire::getNumber() const
 {
-	return wireNumber;
+	return WireNumber;
 }
 
 void Wire::addGate(Gate * newGate)
 {
 	gates.push_back(newGate);
+}
+
+string Wire::getName() const
+{
+	return name;
 }
