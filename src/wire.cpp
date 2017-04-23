@@ -1,8 +1,8 @@
-#include "wire.h"
+#include "Wire.h"
 
-wire::wire(int number, bool io, string inName)
+Wire::Wire(int number, bool io, string inName)
 {
-	wireNumber = number;
+	WireNumber = number;
 	isPrint = io;
 	name = inName;
 	value = -1;
