@@ -8,7 +8,7 @@ int main() {
 	string fileName;
 	Simulation e;
 
-	getline(in, fileName);
+	getline(cin, fileName);
 	e.parseCircuit(fileName);
 
 	// 2. Parse the vector file to initialize the simulation Queue with initial
@@ -24,5 +24,4 @@ int main() {
 
 	// 4. Print the results of the simulation
 	e.print();
-	}
 }
