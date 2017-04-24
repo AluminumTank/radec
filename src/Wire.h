@@ -15,7 +15,7 @@ class Wire {
 
 		void addGate(Gate* newGate);
 
-		int getValue(int time) const;
+		int getValue(int wantedTime) const;
 		int getNumber() const;
 		string getName() const;
 
@@ -23,7 +23,8 @@ class Wire {
 
 	private:
 		int WireNumber, value, lastEvent;
-		vector<int> history;
+		vector<int> historyTimes;
+		vector<int> historyValues;
 		string name;
 		bool isPrint;
 		vector<Gate*> gates;
