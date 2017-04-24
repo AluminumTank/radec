@@ -6,18 +6,19 @@ bool Simulation::parseCircuit(string fileName)
 	in.open(fileName + ".txt");
 	if (in.fail()) {
 		cerr << endl << fileName << ".txt could not be opened :(";
-		exit(1);
+		return false;
 	}
 
 	string tmpString, tmpType;
 	int tmp1, tmp2, tmp3;
 	Wire *tmpWire;
 	Gate *tmpGate;
+
+	// get rid of first line
 	getline(in, tmpString);
 
 	while (!in.eof()) {
 		in >> tmpType;
-
 		in >> tmpString;
 		in >> tmp1;
 
@@ -77,6 +78,37 @@ bool Simulation::parseCircuit(string fileName)
 				findWire(tmp3));
 			gates.push_back(tmpGate);
 		}
+	}
+	return true;
+}
+
+bool parseVector(string fileName) {
+	ifstream in;
+	in.open(fileName + "_v.txt");
+	if (in.fail()) {
+		cerr << endl << fileName << "_v.txt could not be opened :(";
+		return false;
+	}
+
+	string tmpString;
+	int timeInt, valInt;
+
+	// get rid of first line
+	getline(in, tmpString);
+
+	while(!in.eof()) {
+		in >> tmpString;
+		in >> tmpString;
+		in >> timeInt;
+		in >> valInt;
+
+		for(auto i = wires.begin(); i != wires.end(); ++i) {
+			if(i->getName() == tmpString) {
+				tmpWire = i;
+			}
+		}
+
+		e.push(Event(eventNum++, valInt, timeInt, tmpWire));
 	}
 }
 
