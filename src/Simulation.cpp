@@ -104,7 +104,7 @@ bool Simulation::parseVector(string fileName) {
 		in >> valInt;
 
 		for(auto i = wires.begin(); i != wires.end(); ++i) {
-			if(i->getName() == tmpString) {
+			if((**i).getName() == tmpString) {
 				tmpWire = *i;
 			}
 		}
