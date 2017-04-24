@@ -7,22 +7,26 @@ Wire::Wire(int number, bool io, string inName)
 	name = inName;
 	value = -1;
 	lastEvent = 0;
-	history.insert(history.begin(), 60, -1);
 }
 
-int Wire::getValue(int time) const
+int Wire::getValue(int wantedTime) const
 {
-	for (auto i = history.begin() + time; i != history.begin(); i--) {
-		if (i[0] != -1) {
-			return i[0];
+	if (historyTimes.size() == 0 || wantedTime < historyTimes[0]) {
+		return -1;
+	}
+	else {
+		for (auto i = historyTimes.begin(); i != historyTimes.end(); i++) {
+			if (*i > wantedTime) {
+				return historyValues[i - 1 - historyTimes.begin()];
+			}
 		}
 	}
-	return -1;
 }
 
 void Wire::setValue(int newValue, int setTime)
 {
-	history[setTime] = newValue;
+	historyTimes.push_back(setTime);
+	historyValues.push_back(newValue);
 	if (lastEvent < setTime) {
 		lastEvent = setTime;
 	}
