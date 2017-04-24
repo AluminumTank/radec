@@ -1,8 +1,4 @@
-#include "gate.h"
-
-Gate::Gate()
-{
-}
+#include "Gate.h"
 
 void Gate::setOut(int newValue, int setTime)
 {
