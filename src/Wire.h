@@ -20,6 +20,7 @@ class Wire {
 		string getName() const;
 
 		void setValue(int newValue, int setTime);
+		void convertToIO(string newName);
 
 	private:
 		int WireNumber, value, lastEvent;

@@ -32,6 +32,12 @@ void Wire::setValue(int newValue, int setTime)
 	}
 }
 
+void Wire::convertToIO(string newName)
+{
+	name = newName;
+	isPrint = true;
+}
+
 int Wire::getNumber() const
 {
 	return WireNumber;
