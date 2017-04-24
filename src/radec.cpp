@@ -8,7 +8,7 @@ int main() {
 	string fileName;
 	Simulation e;
 
-	cout << "Please enter filename:\n";
+	cout << "Please enter filename: ";
 	getline(cin, fileName);
 	e.parseCircuit(fileName);
 
