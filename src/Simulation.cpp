@@ -82,7 +82,7 @@ bool Simulation::parseCircuit(string fileName)
 	return true;
 }
 
-bool parseVector(string fileName) {
+bool Simulation::parseVector(string fileName) {
 	ifstream in;
 	in.open(fileName + "_v.txt");
 	if (in.fail()) {
@@ -92,6 +92,7 @@ bool parseVector(string fileName) {
 
 	string tmpString;
 	int timeInt, valInt;
+	Wire *tmpWire;
 
 	// get rid of first line
 	getline(in, tmpString);
@@ -104,7 +105,7 @@ bool parseVector(string fileName) {
 
 		for(auto i = wires.begin(); i != wires.end(); ++i) {
 			if(i->getName() == tmpString) {
-				tmpWire = i;
+				tmpWire = *i;
 			}
 		}
 
