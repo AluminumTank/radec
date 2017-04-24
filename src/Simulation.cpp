@@ -22,13 +22,9 @@ bool Simulation::parseCircuit(string fileName)
 		in >> tmpString;
 		in >> tmp1;
 
-		if (tmpType == "INPUT") {
-			tmpWire = new Wire(tmp1, true, tmpString);
-			wires.push_back(tmpWire);
-		}
-		else if (tmpType == "OUTPUT") {
-			tmpWire = new Wire(tmp1, false, tmpString);
-			wires.push_back(tmpWire);
+		if (tmpType == "INPUT" || tmpType == "OUTPUT") {
+			tmpWire = findWire(tmp1);
+			tmpWire->convertToIO(tmpString);
 		}
 		else if (tmpType == "NOT") {
 			in >> tmp2;
@@ -126,7 +122,11 @@ Wire * Simulation::findWire(int n)
 	for (auto i = wires.begin(); i != wires.end(); ++i) {
 		if (n == (**i).getNumber()) return *i;
 	}
-	return nullptr;
+
+	// if wire does not exist, create it, instantiating as an intermediary wire
+	Wire * tmpWire = new Wire(n, false);
+	wires.push_back(tmpWire);
+	return tmpWire;
 }
 
 int Simulation::getDelay(string d)
