@@ -175,24 +175,6 @@
   <ItemGroup>
     <None Include="..\..\readme.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\circuit\circuit0.txt" />
-    <Text Include="..\..\circuit\circuit0_v.txt" />
-    <Text Include="..\..\circuit\circuit1.txt" />
-    <Text Include="..\..\circuit\circuit1_v.txt" />
-    <Text Include="..\..\circuit\circuit2.txt" />
-    <Text Include="..\..\circuit\circuit2_v.txt" />
-    <Text Include="..\..\circuit\circuit3.txt" />
-    <Text Include="..\..\circuit\circuit3_v.txt" />
-    <Text Include="..\..\circuit\circuit4.txt" />
-    <Text Include="..\..\circuit\circuit4_v.txt" />
-    <Text Include="..\..\circuit\circuit5.txt" />
-    <Text Include="..\..\circuit\circuit5_v.txt" />
-    <Text Include="..\..\circuit\circuit7.txt" />
-    <Text Include="..\..\circuit\circuit7_v.txt" />
-    <Text Include="..\..\circuit\circuit8.txt" />
-    <Text Include="..\..\circuit\circuit8_v.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
