@@ -110,8 +110,8 @@ bool Simulation::parseVector(string fileName) {
 		return false;
 	}
 
-	string tmpString;
-	int timeInt, valInt;
+	string tmpString, valInt;
+	int timeInt;
 	Wire *tmpWire = nullptr;
 
 	// get rid of first line
@@ -129,7 +129,12 @@ bool Simulation::parseVector(string fileName) {
 			}
 		}
 
-		e.push(Event(valInt, timeInt, tmpWire));
+		if (valInt == "X") {
+			e.push(Event(-1, timeInt, tmpWire));
+		}
+		else {
+			e.push(Event(atoi(valInt.c_str()), timeInt, tmpWire));
+		}
 	}
 }
 
