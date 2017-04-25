@@ -23,6 +23,19 @@ int Wire::getValue(int wantedTime) const
 	}
 }
 
+char Wire::getChar(int wantedTime) const
+{
+	if (getValue(wantedTime) == -1) {
+		return 'x';
+	}
+	else if (getValue(wantedTime) == 0) {
+		return '_';
+	}
+	else {
+		return '-';
+	}
+}
+
 bool Wire::setValue(int newValue, int setTime)
 {
 	if (getValue(setTime) != newValue) {
@@ -50,6 +63,11 @@ Gate * Wire::getGate(int index)
 	return nullptr;
 }
 
+void Wire::setLast(int last)
+{
+	lastEvent = last;
+}
+
 int Wire::getNumber() const
 {
 	return WireNumber;
@@ -63,4 +81,23 @@ void Wire::addGate(Gate * newGate)
 string Wire::getName() const
 {
 	return name;
+}
+
+int Wire::getLast() const
+{
+	return lastEvent;
+}
+
+ostream & operator<<(ostream & out, const Wire & c)
+{
+	if (c.isPrint) {
+		int len = 0;
+		out << setw(10) << c.name;
+			while (len <= 60 && len <= c.lastEvent)
+			{
+				out << setw(0) << c.getChar(len++);
+			}
+			out << endl;
+	}
+	return out;
 }
