@@ -127,7 +127,7 @@ void Simulation::simulate() {
 			int index = 0;
 			do{
 				tmpGate = output->getGate(index++);
-				tmpGate->evaluate(tmpEvent.evTime);
+				e.push(tmpGate->evaluate(tmpEvent.evTime));
 			}while(tmpGate != nullptr);
 		}
 	}
@@ -135,6 +135,10 @@ void Simulation::simulate() {
 
 void Simulation::print()
 {
+	// iterate through wires, printing each of them
+	for(auto i = wires.begin(); i != wires.end(); ++i) {
+		cout << *i;
+	}
 }
 
 Wire * Simulation::findWire(int n)
