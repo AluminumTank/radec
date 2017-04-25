@@ -129,32 +129,30 @@ bool Simulation::parseVector(string fileName) {
 			}
 		}
 
-		e.push(Event(eventNum++, valInt, timeInt, tmpWire));
+		e.push(Event(valInt, timeInt, tmpWire));
 	}
 }
 
 void Simulation::simulate() {
 	// loop through event queue
 	while(!e.empty()) {
-		bool doesChange;
+		bool changed;
 		Wire * output;
 
 		Event tmpEvent = e.top();
-		e.pop();
 
 		output = tmpEvent.getOutput();
-		doesChange = output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
+		changed = output->doesChange(tmpEvent.getValue(), tmpEvent.getTime());
 
 		// if the wire value changes, evaluate gates
-		if(doesChange) {
+		if(changed && !(tmpEvent.getTime() > 60)) {
 			Gate * tmpGate;
-			Event gateEvent(-1, -1, -1, nullptr);
+			Event gateEvent(-1, -1, nullptr);
 			int index = 0;
 			while(true){
 				tmpGate = output->getGate(index++);
 				if (tmpGate != nullptr) {
 					gateEvent = tmpGate->evaluate(tmpEvent.getTime());
-					gateEvent.setNum(eventNum++);
 					e.push(gateEvent);
 				}
 				else {
@@ -162,6 +160,8 @@ void Simulation::simulate() {
 				}
 			}
 		}
+		output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
+		e.pop();
 	}
 }
 
