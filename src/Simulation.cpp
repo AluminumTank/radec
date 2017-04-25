@@ -19,10 +19,10 @@ bool Simulation::parseCircuit(string fileName)
 	// get rid of first line
 	getline(in, tmpString);
 
-	while (!in.eof()) {
-		in >> tmpType;
-		in >> tmpString;
-		in >> tmp1;
+	while (true) {
+		if (!(in >> tmpType)) break;
+		if (!(in >> tmpString)) break;
+		if (!(in >> tmp1)) break;
 
 		if (tmpType == "INPUT" || tmpType == "OUTPUT") {
 			tmpWire = findWire(tmp1);
@@ -117,11 +117,11 @@ bool Simulation::parseVector(string fileName) {
 	// get rid of first line
 	getline(in, tmpString);
 
-	while(!in.eof()) {
-		in >> tmpString;
-		in >> tmpString;
-		in >> timeInt;
-		in >> valInt;
+	while(true) {
+		if (!(in >> tmpString)) break;
+		if (!(in >> tmpString)) break;
+		if (!(in >> tmpInt)) break;
+		if (!(in >> valInt)) break;
 
 		for(auto i = wires.begin(); i != wires.end(); ++i) {
 			if((**i).getName() == tmpString) {
