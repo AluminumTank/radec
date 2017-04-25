@@ -120,7 +120,7 @@ bool Simulation::parseVector(string fileName) {
 	while(true) {
 		if (!(in >> tmpString)) break;
 		if (!(in >> tmpString)) break;
-		if (!(in >> tmpInt)) break;
+		if (!(in >> timeInt)) break;
 		if (!(in >> valInt)) break;
 
 		for(auto i = wires.begin(); i != wires.end(); ++i) {
