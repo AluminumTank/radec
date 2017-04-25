@@ -148,11 +148,14 @@ void Simulation::simulate() {
 		// if the wire value changes, evaluate gates
 		if(doesChange) {
 			Gate * tmpGate;
+			Event gateEvent;
 			int index = 0;
 			while(true){
 				tmpGate = output->getGate(index++);
 				if (tmpGate != nullptr) {
-					e.push(tmpGate->evaluate(tmpEvent.getTime()));
+					gateEvent = tmpGate->evaluate(tmpEvent.getTime());
+					gateEvent.setNum(eventNum++);
+					e.push(gateEvent);
 				}
 				else {
 					break;
