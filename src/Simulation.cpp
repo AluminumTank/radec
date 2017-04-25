@@ -1,4 +1,6 @@
 #include "Simulation.h"
+#include <iostream>
+#include <iomanip>
 
 bool Simulation::parseCircuit(string fileName)
 {
@@ -135,9 +137,27 @@ void Simulation::simulate() {
 
 void Simulation::print()
 {
-	// iterate through wires, printing each of them
+	int lastTime = 0;
+	int tmpTime = 0;
+	// iterate through wires, finding wire with last event time
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
+		if(i->getLast() > lastTime) {
+			lastTime = i->getLast();
+		}
+	}
+
+	// now iterate through wires, printing each of them
+	for(auto i = wires.begin(); i != wires.end(); ++i) {
+		i->setLast(lastTime);
 		cout << *i;
+	}
+
+	int t = 0;
+	cout << setw(10) << "TIME";
+	cout.setw(5);
+	while(t <= 60 && t <= lastTime) {
+		cout << t;
+		t += 5;
 	}
 }
 
