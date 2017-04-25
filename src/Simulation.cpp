@@ -207,3 +207,4 @@ int Simulation::getDelay(string d)
 	d.resize(d.size() - 2);
 	return atoi(d.c_str());
 }
+

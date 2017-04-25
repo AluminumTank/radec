@@ -1,4 +1,5 @@
 #include "NandGate.h"
+#include <iostream>
 
 NandGate::NandGate(int d, Wire * wire1, Wire * wire2, Wire * wire3)
 {
@@ -10,6 +11,7 @@ NandGate::NandGate(int d, Wire * wire1, Wire * wire2, Wire * wire3)
 
 Event NandGate::evaluate(int evTime)
 {
+	cout << evTime << " " << in1->getValue(evTime) << " " << in2->getValue(evTime) << endl;
 	if (in1->getValue(evTime) == 0 || in2->getValue(evTime) == 0) {
 		return Event(1, evTime + delay, out);
 	}
