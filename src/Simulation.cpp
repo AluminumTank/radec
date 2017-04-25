@@ -148,7 +148,7 @@ void Simulation::simulate() {
 		// if the wire value changes, evaluate gates
 		if(doesChange) {
 			Gate * tmpGate;
-			Event gateEvent;
+			Event gateEvent(-1, -1, -1, nullptr);
 			int index = 0;
 			while(true){
 				tmpGate = output->getGate(index++);
