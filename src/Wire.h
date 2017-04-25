@@ -19,8 +19,9 @@ class Wire {
 		int getNumber() const;
 		string getName() const;
 
-		void setValue(int newValue, int setTime);
+		bool setValue(int newValue, int setTime);
 		void convertToIO(string newName);
+		Gate* getGate(int index);
 
 	private:
 		int WireNumber, value, lastEvent;

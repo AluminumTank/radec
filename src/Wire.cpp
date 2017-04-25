@@ -23,19 +23,31 @@ int Wire::getValue(int wantedTime) const
 	}
 }
 
-void Wire::setValue(int newValue, int setTime)
+bool Wire::setValue(int newValue, int setTime)
 {
-	historyTimes.push_back(setTime);
-	historyValues.push_back(newValue);
-	if (lastEvent < setTime) {
-		lastEvent = setTime;
+	if (getValue(setTime) != newValue) {
+		historyTimes.push_back(setTime);
+		historyValues.push_back(newValue);
+		if (lastEvent < setTime) {
+			lastEvent = setTime;
+		}
+		return true; // I changed the value
 	}
+	return false; // Nothing changed
 }
 
 void Wire::convertToIO(string newName)
 {
 	name = newName;
 	isPrint = true;
+}
+
+Gate * Wire::getGate(int index)
+{
+	if (index >= gates.size()) {
+		return gates[index];
+	}
+	return nullptr;
 }
 
 int Wire::getNumber() const
