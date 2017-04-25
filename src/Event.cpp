@@ -22,6 +22,11 @@ Wire * Event::getOutput() const
 	return out;
 }
 
+void Event::setNum(int num)
+{
+	evNum = num;
+}
+
 bool operator<(const Event &e1, const Event &e2) {
 	if(e1.evTime == e2.evTime) {
 		return e1.evNum > e2.evNum;
