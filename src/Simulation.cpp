@@ -129,7 +129,7 @@ void Simulation::simulate() {
 			int index = 0;
 			do{
 				tmpGate = output->getGate(index++);
-				e.push(tmpGate->evaluate(tmpEvent.evTime));
+				e.push(tmpGate->evaluate(tmpEvent.getTime()));
 			}while(tmpGate != nullptr);
 		}
 	}
@@ -141,20 +141,20 @@ void Simulation::print()
 	int tmpTime = 0;
 	// iterate through wires, finding wire with last event time
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
-		if(i->getLast() > lastTime) {
-			lastTime = i->getLast();
+		if((**i).getLast() > lastTime) {
+			lastTime = (**i).getLast();
 		}
 	}
 
 	// now iterate through wires, printing each of them
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
-		i->setLast(lastTime);
+		(**i).setLast(lastTime);
 		cout << *i;
 	}
 
 	int t = 0;
 	cout << setw(10) << "TIME";
-	cout.setw(5);
+	cout << setw(5);
 	while(t <= 60 && t <= lastTime) {
 		cout << t;
 		t += 5;
