@@ -12,6 +12,7 @@ class Event {
 		int getValue() const;
 		int getTime() const;
 		Wire* getOutput() const;
+		void setNum(int num);
 	private:
 		int evNum, evValue, evTime;
 		Wire *out;
