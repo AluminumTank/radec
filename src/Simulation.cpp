@@ -183,9 +183,9 @@ void Simulation::print()
 	}
 
 	int t = 0;
-	cout << setw(10) << "TIME";
+	cout << setw(10) << "TIME ";
 	while(t <= 60 && t <= lastTime) {
-		cout << setw(5) << t;
+		cout << setw(5) << left << t;
 		t += 5;
 	}
 }
