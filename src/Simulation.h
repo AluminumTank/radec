@@ -31,7 +31,6 @@ class Simulation {
 		priority_queue<Event> e;
 		vector<Gate*> gates;
 		vector<Wire*> wires;
-		int eventNum;
 };
 
 #endif // !SIMULATION

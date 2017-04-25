@@ -22,7 +22,8 @@ class Wire {
 		string getName() const;
 		int getLast() const;
 
-		bool setValue(int newValue, int setTime);
+		void setValue(int newValue, int setTime);
+		bool doesChange(int newValue, int setTime);
 		void convertToIO(string newName);
 		Gate* getGate(int index);
 		void setLast(int last);
