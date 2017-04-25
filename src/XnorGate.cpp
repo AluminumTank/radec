@@ -18,6 +18,9 @@ Event XnorGate::evaluate(int evTime) {
 			return Event(-1, 0, evTime + delay, out);
 		}
 	}
+	else {
+		return Event(-1, -1, evTime + delay, out);
+	}
 }
 
 int XnorGate::getDelay()

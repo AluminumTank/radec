@@ -16,6 +16,9 @@ Event NorGate::evaluate(int evTime) {
 	else if (in1->getValue(evTime) == 0 && in2->getValue(evTime) == 0) {
 		return Event(-1, 1, evTime + delay, out);
 	}
+	else{
+		return Event(-1, -1, evTime + delay, out);
+	}
 }
 
 int NorGate::getDelay()
