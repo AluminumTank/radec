@@ -12,14 +12,10 @@ XnorGate::XnorGate(int d, Wire* wire1, Wire* wire2, Wire* wire3) {
 Event XnorGate::evaluate(int evTime) {
 	if (in1->getValue(evTime) != -1 && in2->getValue(evTime) != -1) {
 		if (in1->getValue(evTime) == in2->getValue(evTime)) {
-			if (out->getValue(evTime + delay) != 1) {
-				return Event(-1, 1, evTime + delay, out);
-			}
+			return Event(-1, 1, evTime + delay, out);
 		}
 		else {
-			if (out->getValue(evTime + delay) != 0) {
-				return Event(-1, 0, evTime + delay, out);
-			}
+			return Event(-1, 0, evTime + delay, out);
 		}
 	}
 }
