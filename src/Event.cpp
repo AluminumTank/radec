@@ -1,7 +1,9 @@
 #include "Event.h"
 
-Event::Event(int num, int value, int setTime, Wire * output){
-	evNum = num;
+int Event::numOfEvents = 0;
+
+Event::Event(int value, int setTime, Wire * output){
+	evNum = numOfEvents++;
 	evValue = value;
 	evTime = setTime;
 	out = output;

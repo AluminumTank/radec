@@ -39,17 +39,19 @@ char Wire::getChar(int wantedTime) const
 	}
 }
 
-bool Wire::setValue(int newValue, int setTime)
+void Wire::setValue(int newValue, int setTime)
 {
-	if (getValue(setTime) != newValue) {
+	if (doesChange(newValue, setTime)) {
 		historyTimes.push_back(setTime);
 		historyValues.push_back(newValue);
 		if (lastEvent < setTime) {
 			lastEvent = setTime;
 		}
-		return true; // I changed the value
 	}
-	return false; // Nothing changed
+}
+
+bool Wire::doesChange(int newValue, int setTime) {
+	return getValue(setTime) != newValue;
 }
 
 void Wire::convertToIO(string newName)
