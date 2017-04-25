@@ -57,7 +57,7 @@ void Wire::convertToIO(string newName)
 
 Gate * Wire::getGate(int index)
 {
-	if (index >= gates.size()) {
+	if (index < gates.size()) {
 		return gates[index];
 	}
 	return nullptr;

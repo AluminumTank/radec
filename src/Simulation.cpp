@@ -90,7 +90,7 @@ bool Simulation::parseVector(string fileName) {
 
 	string tmpString;
 	int timeInt, valInt;
-	Wire *tmpWire;
+	Wire *tmpWire = nullptr;
 
 	// get rid of first line
 	getline(in, tmpString);
@@ -127,10 +127,15 @@ void Simulation::simulate() {
 		if(doesChange) {
 			Gate * tmpGate;
 			int index = 0;
-			do{
+			while(true){
 				tmpGate = output->getGate(index++);
-				e.push(tmpGate->evaluate(tmpEvent.getTime()));
-			}while(tmpGate != nullptr);
+				if (tmpGate != nullptr) {
+					e.push(tmpGate->evaluate(tmpEvent.getTime()));
+				}
+				else {
+					break;
+				}
+			}
 		}
 	}
 }
@@ -149,14 +154,13 @@ void Simulation::print()
 	// now iterate through wires, printing each of them
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
 		(**i).setLast(lastTime);
-		cout << *i;
+		cout << **i;
 	}
 
 	int t = 0;
 	cout << setw(10) << "TIME";
-	cout << setw(5);
 	while(t <= 60 && t <= lastTime) {
-		cout << t;
+		cout << setw(5) << t;
 		t += 5;
 	}
 }

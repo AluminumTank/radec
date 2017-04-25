@@ -98,4 +98,54 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\circuit\circuit0.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit0_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit1_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit2_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit3_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit4.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit4_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit5.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit5_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit7.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit7_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit8.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\circuit\circuit8_v.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
