@@ -109,8 +109,28 @@ bool Simulation::parseVector(string fileName) {
 	}
 }
 
-void Simulation::simulate()
-{
+void Simulation::simulate() {
+	// loop through event queue
+	while(!e.empty()) {
+		bool doesChange;
+		Wire * output;
+
+		Event tmpEvent = e.top();
+		e.pop();
+
+		output = tmpEvent.getOutput();
+		doesChange = output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
+
+		// if the wire value changes, evaluate gates
+		if(doesChange) {
+			Gate * tmpGate;
+			int index = 0;
+			do{
+				tmpGate = output->getGate(index++);
+				tmpGate->evaluate(tmpEvent.evTime);
+			}while(tmpGate != nullptr);
+		}
+	}
 }
 
 void Simulation::print()
