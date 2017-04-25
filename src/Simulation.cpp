@@ -32,49 +32,71 @@ bool Simulation::parseCircuit(string fileName)
 			in >> tmp2;
 			tmpGate = new NotGate(getDelay(tmpString), findWire(tmp1),
 				findWire(tmp2));
+
+			// push gate onto Simulation gates vector
 			gates.push_back(tmpGate);
+			// also push gate onto input wire's gate vector
+			findWire(tmp1)->addGate(tmpGate);
 		}
 		else if (tmpType == "AND") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new AndGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 		else if (tmpType == "NAND") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new NandGate(getDelay(tmpString), findWire(tmp1),
 				findWire(tmp2), findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 		else if (tmpType == "OR") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new OrGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 		else if (tmpType == "XOR") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new XorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 		else if (tmpType == "NOR") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new NorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 		else if (tmpType == "XNOR") {
 			in >> tmp2;
 			in >> tmp3;
 			tmpGate = new XnorGate(getDelay(tmpString), findWire(tmp1), findWire(tmp2),
 				findWire(tmp3));
+
 			gates.push_back(tmpGate);
+			findWire(tmp1)->addGate(tmpGate);
+			findWire(tmp2)->addGate(tmpGate);
 		}
 	}
 	return true;
