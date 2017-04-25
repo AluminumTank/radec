@@ -143,6 +143,7 @@ void Simulation::simulate() {
 
 		output = tmpEvent.getOutput();
 		changed = output->doesChange(tmpEvent.getValue(), tmpEvent.getTime());
+		output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
 
 		// if the wire value changes, evaluate gates
 		if(changed && !(tmpEvent.getTime() > 60)) {
@@ -160,7 +161,6 @@ void Simulation::simulate() {
 				}
 			}
 		}
-		output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
 		e.pop();
 	}
 }
