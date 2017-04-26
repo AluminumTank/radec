@@ -11,13 +11,7 @@ int main() {
 
 	cout << "Please enter filename: ";
 	getline(cin, fileName);
-	cout << "How long do you want to simulate to (default 60)? ";
-	if (cin.peek() == '\n') {
-		len = 60;
-	}
-	else if (!(cin >> len)) {
-		cout << "Invalid input using 60.\n";
-	}
+	
 	e.parseCircuit(fileName);
 
 	// 2. Parse the vector file to initialize the simulation Queue with initial
@@ -31,7 +25,15 @@ int main() {
 	// fourth, apply e's effects
 	e.simulate(len);
 
-	// 4. Print the results of the simulation
+	// 4. Ask how long you want the line length to be
+	//	Print the results of the simulation
+	cout << "How long do you want to simulate to (default 60)? ";
+	if (cin.peek() == '\n') {
+		len = 60;
+	}
+	else if (!(cin >> len)) {
+		cout << "Invalid input using 60.\n";
+	}
 	e.print(len);
 	system("pause");
 }
