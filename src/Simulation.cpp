@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 
+// parse the Circuit file and create in memory data structure
 bool Simulation::parseCircuit(string fileName)
 {
 	ifstream in;
@@ -25,10 +26,12 @@ bool Simulation::parseCircuit(string fileName)
 		if (!(in >> tmpString)) break;
 		if (!(in >> tmp1)) break;
 
+		// create an in-memory wire
 		if (tmpType == "INPUT" || tmpType == "OUTPUT") {
 			tmpWire = findWire(tmp1);
 			tmpWire->convertToIO(tmpString);
 		}
+		// rest of blocks deal with gates and have nearly identical structures
 		else if (tmpType == "NOT") {
 			in >> tmp2;
 			tmpGate = new NotGate(getDelay(tmpString), findWire(tmp1),
@@ -103,11 +106,12 @@ bool Simulation::parseCircuit(string fileName)
 	return true;
 }
 
+// parse the Vector file and add provided events to the priority_queue
 bool Simulation::parseVector(string fileName) {
 	ifstream in;
 	in.open(fileName + "_v.txt");
 	if (in.fail()) {
-		cerr << endl << fileName << "_v.txt could not be opened :(";
+		cerr << endl << fileName << "_v.txt could not be opened :(\n";
 		return false;
 	}
 
@@ -118,12 +122,14 @@ bool Simulation::parseVector(string fileName) {
 	// get rid of first line
 	getline(in, tmpString);
 
+	// pull in all data from Vector file
 	while(true) {
 		if (!(in >> tmpString)) break;
 		if (!(in >> tmpString)) break;
 		if (!(in >> timeInt)) break;
 		if (!(in >> valInt)) break;
 
+		// find wire with provided name
 		for(auto i = wires.begin(); i != wires.end(); ++i) {
 			if((**i).getName() == tmpString) {
 				tmpWire = *i;
@@ -139,6 +145,7 @@ bool Simulation::parseVector(string fileName) {
 	}
 }
 
+// simulate the circuit using the provided in-memory circuit and queue of events
 void Simulation::simulate(int simTime) {
 	// loop through event queue
 	while(!e.empty()) {
@@ -171,6 +178,7 @@ void Simulation::simulate(int simTime) {
 	}
 }
 
+// print each wire's trace
 void Simulation::print(int simTime)
 {
 	int lastTime = 0;
@@ -200,6 +208,8 @@ void Simulation::print(int simTime)
 	cout << t << endl;
 }
 
+// iterate through wires vector and find wire with provided number; if wire does
+// not exist, create a new one
 Wire * Simulation::findWire(int n)
 {
 	for (auto i = wires.begin(); i != wires.end(); ++i) {

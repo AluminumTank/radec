@@ -9,6 +9,7 @@ XnorGate::XnorGate(int d, Wire* wire1, Wire* wire2, Wire* wire3) {
 	out = wire3;
 }
 
+// generate an event based on changes in the Gate's inputs
 Event XnorGate::evaluate(int evTime) {
 	if (in1->getValue(evTime) != -1 && in2->getValue(evTime) != -1) {
 		if (in1->getValue(evTime) == in2->getValue(evTime)) {

@@ -5,6 +5,8 @@
 
 class Wire;
 
+// this class provides a base class for all other Gate classes (provided in
+// other files)
 class Gate {
 	public:
 		virtual Event evaluate(int) = 0;

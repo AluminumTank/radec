@@ -1,3 +1,9 @@
+// Name: radec.cpp
+// Author: Joel Beckmeyer, Daniel Parker
+// Date: 2017-04-26
+// Purpose: to use the library we have developed in order to simulate a boolean
+//	logic circuit
+
 #include "Simulation.h"
 
 using namespace std;

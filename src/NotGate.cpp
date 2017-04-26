@@ -8,6 +8,7 @@ NotGate::NotGate(int d, Wire* wire1, Wire* wire2) {
 	out = wire2;
 }
 
+// generate an event based on changes in the Gate's inputs
 Event NotGate::evaluate(int evTime) {
 	if (in1->getValue(evTime) == 1) {
 			return Event(0, evTime + delay, out);
