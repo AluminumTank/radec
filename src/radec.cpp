@@ -43,7 +43,7 @@ int main() {
 
 		// 4. Print the results of the simulation
 		e.print(len);
-		system("pause");
 	}
+	system("pause");
 	return 0;
 }
