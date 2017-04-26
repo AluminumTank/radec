@@ -22,8 +22,8 @@ class Simulation {
 	public:
 		bool parseCircuit(string fileName);
 		bool parseVector(string fileName);
-		void simulate();
-		void print();
+		void simulate(int);
+		void print(int);
 	private:
 		Wire* findWire(int n);
 		int getDelay(string d);

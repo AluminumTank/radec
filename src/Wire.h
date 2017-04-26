@@ -25,13 +25,14 @@ class Wire {
 		void setValue(int newValue, int setTime);
 		bool doesChange(int newValue, int setTime);
 		void convertToIO(string newName);
-		Gate* getGate(int index);
+		Gate* getGate(int index) const;
 		void setLast(int last);
+		void setPrintLen(int);
 
 		friend ostream& operator<<(ostream &out, const Wire &c);
 
 	private:
-		int WireNumber, value, lastEvent;
+		int WireNumber, value, lastEvent, printLen;
 		vector<int> historyTimes;
 		vector<int> historyValues;
 		string name;

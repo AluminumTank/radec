@@ -60,7 +60,7 @@ void Wire::convertToIO(string newName)
 	isPrint = true;
 }
 
-Gate * Wire::getGate(int index)
+Gate * Wire::getGate(int index) const
 {
 	if (index < gates.size()) {
 		return gates[index];
@@ -71,6 +71,11 @@ Gate * Wire::getGate(int index)
 void Wire::setLast(int last)
 {
 	lastEvent = last;
+}
+
+void Wire::setPrintLen(int len)
+{
+	printLen = len;
 }
 
 int Wire::getNumber() const
@@ -97,12 +102,12 @@ ostream & operator<<(ostream & out, const Wire & c)
 {
 	if (c.isPrint) {
 		int len = 0;
-		out << setw(10) << c.name + " ";
-			while (len <= 60 && len <= c.lastEvent)
+		out << setw(6) << c.name + ": ";
+			while (len <= c.printLen && len <= c.lastEvent)
 			{
 				out << setw(0) << c.getChar(len++);
 			}
-			out << endl;
+			out << endl << endl;
 	}
 	return out;
 }

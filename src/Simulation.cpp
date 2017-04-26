@@ -1,6 +1,7 @@
 #include "Simulation.h"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 bool Simulation::parseCircuit(string fileName)
 {
@@ -138,7 +139,7 @@ bool Simulation::parseVector(string fileName) {
 	}
 }
 
-void Simulation::simulate() {
+void Simulation::simulate(int simTime) {
 	// loop through event queue
 	while(!e.empty()) {
 		bool changed;
@@ -151,7 +152,7 @@ void Simulation::simulate() {
 		output->setValue(tmpEvent.getValue(), tmpEvent.getTime());
 
 		// if the wire value changes, evaluate gates
-		if(changed && !(tmpEvent.getTime() > 60)) {
+		if(changed && !(tmpEvent.getTime() > simTime)) {
 			Gate * tmpGate;
 			Event gateEvent(-1, -1, nullptr);
 			int index = 0;
@@ -170,7 +171,7 @@ void Simulation::simulate() {
 	}
 }
 
-void Simulation::print()
+void Simulation::print(int simTime)
 {
 	int lastTime = 0;
 	int tmpTime = 0;
@@ -181,18 +182,22 @@ void Simulation::print()
 		}
 	}
 
+
+	cout << "\n\nWire Traces: \n";
 	// now iterate through wires, printing each of them
 	for(auto i = wires.begin(); i != wires.end(); ++i) {
 		(**i).setLast(lastTime);
+		(**i).setPrintLen(simTime);
 		cout << **i;
 	}
 
 	int t = 0;
-	cout << setw(10) << "TIME ";
-	while(t <= 60 && t <= lastTime) {
-		cout << setw(5) << left << t;
+	cout << setw(6) << "TIME: ";
+	while(t < simTime && t <= lastTime) {
+		cout << setfill('.') << setw(5) << left << t;
 		t += 5;
 	}
+	cout << t << endl;
 }
 
 Wire * Simulation::findWire(int n)

@@ -7,9 +7,17 @@ int main() {
 	//		to simulate
 	string fileName;
 	Simulation e;
+	int len = 60;
 
 	cout << "Please enter filename: ";
 	getline(cin, fileName);
+	cout << "How long do you want to simulate to (default 60)? ";
+	if (cin.peek() == '\n') {
+		len = 60;
+	}
+	else if (!(cin >> len)) {
+		cout << "Invalid input using 60.\n";
+	}
 	e.parseCircuit(fileName);
 
 	// 2. Parse the vector file to initialize the simulation Queue with initial
@@ -21,8 +29,9 @@ int main() {
 	// second, determine if e causes a future Wire state change
 	// third, create and queue any future Wire state changes as new Events
 	// fourth, apply e's effects
-	e.simulate();
+	e.simulate(len);
 
 	// 4. Print the results of the simulation
-	e.print();
+	e.print(len);
+	system("pause");
 }
