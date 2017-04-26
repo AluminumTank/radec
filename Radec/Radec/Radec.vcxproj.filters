@@ -98,4 +98,24 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Screenshots\circuit0.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Screenshots\circuit1.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Screenshots\circuit2.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Screenshots\circuit3.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Screenshots\circuit4.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Screenshots\circuit5.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

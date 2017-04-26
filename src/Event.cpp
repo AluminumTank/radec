@@ -37,4 +37,3 @@ bool operator<(const Event &e1, const Event &e2) {
 	}
 	return e1.evTime > e2.evTime;
 }
-
