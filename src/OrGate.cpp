@@ -9,6 +9,7 @@ OrGate::OrGate(int d, Wire* wire1, Wire* wire2, Wire* wire3) {
 	out = wire3;
 }
 
+// generate an event based on changes in the Gate's inputs
 Event OrGate::evaluate(int evTime) {
 	if (in1->getValue(evTime) == 1 || in2->getValue(evTime) == 1) {
 		return Event(1, evTime + delay, out);
