@@ -81,8 +81,9 @@ An example vector file is shown below:
 	
 	TIME: 0....5....10...15...20...25
 
-Please enter filename: circuit4
-What time do you want to simulate to (default 60ns)? 
+
+	Please enter filename: circuit4
+	What time do you want to simulate to (default 60ns)? 
 
 	Wire Traces: 
 	A: _------------------------------------------------------------
