@@ -57,3 +57,7 @@ An example vector file is shown below:
 	INPUT B  0  0
 	INPUT A  4  1
 	INPUT B  5  1
+
+## SCREENSHOTS!
+
+![circuit2](/Screenshots/circuit2.JPG) ![circuit4](/Screenshots/circuit4.JPG)
