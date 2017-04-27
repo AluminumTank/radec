@@ -69,15 +69,15 @@ An example vector file is shown below:
 	What time do you want to simulate to (default 60ns)? 
 	
 	Wire Traces: 
-   A: \_\_\_\_\_\_-----------------
+	A: \_\_\_\_\_\_-----------------
 	
-   B: ---------\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	B: ---------\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 	
-   C: \_\_\_\_-------------------
+	C: \_\_\_\_-------------------
 	
-   D: ------------xxxxxxxxxxx
+	D: ------------xxxxxxxxxxx
 	
-   E: xxxxxxxxxxxxxxxx\_\_\_\_\_\_x
+	E: xxxxxxxxxxxxxxxx\_\_\_\_\_\_x
 	
 	TIME: 0....5....10...15...20...25
 
@@ -85,9 +85,9 @@ Please enter filename: circuit4
 What time do you want to simulate to (default 60ns)? 
 
 	Wire Traces: 
-   A: \_------------------------------------------------------------
+	A: \_------------------------------------------------------------
 	
-   C: xx-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_
+	C: xx-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_
 	
 	TIME: 0....5....10...15...20...25...30...35...40...45...50...55...60
 
