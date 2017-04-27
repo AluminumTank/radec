@@ -3,7 +3,12 @@ This program was developed in several days to meet the following problem specifi
 
 Develop a boolean logic simulator that will take two input files and create wire traces of the input and output wires (as specified in the files). Specifically, one file will detail the circuit (called the “circuit file”), while one will detail how each input wire changes as time goes by (called the “vector file”).
 
-There are several caveats: there is no error handling for badly written Circuit/Vector files, and
+When run, the program will ask for a circuit name. This will be used to open two files (<circuitname>.txt and
+ <circuitname>\_v.txt). The first is the Circuit file and the second is the Vector file. These files will 
+ be detailed later. It will also ask for a time to simulate the circuit to. This time is used in the case 
+ of oscillating (i.e. unstable) wires.
+
+There are several caveats to this project: there is no error handling for badly written Circuit/Vector files, and
 there are only seven gates to choose from (NOT, OR, AND, NOR, NAND, XOR, XNOR).
 
 The file structure is detailed below.
@@ -58,6 +63,31 @@ An example vector file is shown below:
 	INPUT A  4  1
 	INPUT B  5  1
 
-## SCREENSHOTS!
+## EXAMPLE OUTPUT
 
-![circuit2](/Screenshots/circuit2.JPG) ![circuit4](/Screenshots/circuit4.JPG)
+	Please enter filename: circuit2
+	What time do you want to simulate to (default 60ns)? 
+	
+	Wire Traces: 
+   A: \_\_\_\_\_\_-----------------
+	
+   B: ---------\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	
+   C: \_\_\_\_-------------------
+	
+   D: ------------xxxxxxxxxxx
+	
+   E: xxxxxxxxxxxxxxxx\_\_\_\_\_\_x
+	
+	TIME: 0....5....10...15...20...25
+
+Please enter filename: circuit4
+What time do you want to simulate to (default 60ns)? 
+
+	Wire Traces: 
+   A: \_------------------------------------------------------------
+	
+   C: xx-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_x-x\_
+	
+	TIME: 0....5....10...15...20...25...30...35...40...45...50...55...60
+
